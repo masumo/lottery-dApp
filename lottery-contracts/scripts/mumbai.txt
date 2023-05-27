@@ -1,0 +1,13 @@
+Signer 1 address: 0x24E12d5Db42EefeC360e02aCc6F82C682e3C264d
+Signer 2 address: 0xDf6AE824c6121Ab2022199f9b746eC2324Ad7cf2
+Signer 3 address: 0x92B05D2a6CBaF7ADE0c19e516f38Eb1D81254EE7
+
+myErc20Vote contract was deployed at address 0x86757CC01F8BfA9dB48407147BdD00BDeD177e73 at blockNumber: 35829034 at transactionHash: 0xfb9c1fa7c071ef6b708df6c6d832b436a59d867b9db893847b58df6d1cabd6fa
+Minted 10.0 tokens to the address 0xDf6AE824c6121Ab2022199f9b746eC2324Ad7cf2 at blockNumber: 35829040 at transactionHash:0x3a4402c10967092e6818ff95444eedf049dc2be73a127c24a7853da4e2cf1fa6
+
+Proposal N. 1: chocolate
+Proposal N. 2: strawberry
+Proposal N. 3: vanilla
+Ballot contract was deployed at address 0xabd444215f3c7c516ea2beF173D85c2464dA3750 at block number
+      35873541 at transactionHash: 0xf89ead7528ad84d000e90717fbf0d90d5ff41d13d1de0c0d895b66c8740eb4e9
+
