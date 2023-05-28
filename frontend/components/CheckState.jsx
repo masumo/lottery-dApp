@@ -2,6 +2,7 @@ import * as React from 'react';
 import Router, { useRouter } from "next/router";
 import {ethers, Contract} from 'ethers';
 import * as lotteryJson from '../abi/Lottery.json';
+import styles from "../styles/InstructionsComponent.module.css";
 
 export function CheckState() {
   const [data, setData] = React.useState(null);
@@ -19,48 +20,32 @@ export function CheckState() {
 
     return (
       <div>
-        <h2>Checking State</h2>
+        <h2>Check State</h2>
+      
         <button onClick={async () => await checkState(lotteryContract, provider, setLoading, setData)}>
           Check State
         </button>
-          { 
-            isLoading? <p>Checking the state...</p> : <p></p>
-          }
-          { 
-            data? <p>{data}</p> : <p></p>
-          }
+        { 
+          isLoading? <p>Checking the state...</p> : <p></p>
+        }
+        { 
+          data? <p>{data}</p> : <p></p>
+        }
+        </div>
           
-      </div>
     )
     
   }
 
- async function delegate(signer, tokenContract, setLoading, setTxData, setError){
-  if(signer){
-    setLoading(true);
-    tokenContract.connect(signer).delegate(signer._address)
-       .then((data) => {
-         setTxData(data);
-         setLoading(false);
-         console.log("Delegation Done!");
-         console.log(data);
-       }).catch((err) => {
-          setError(err.reason); 
-          setLoading(false);
-          console.log(err);
-       });
-  }else{
-    alert("Please connect to a wallet");
-  }
-   
- }
+
 
  async function checkState(contract, provider, setLoading, setData) {
   setLoading(true);
+  setData(null)
   const state = await contract.betsOpen();
   console.log(`The lottery is ${state ? "open" : "closed"}\n`);
   let output = `The lottery is ${state ? "open" : "closed"}\n`;
-  setData(state);
+  setData(output);
   setLoading(false);
   if (!state) return;
   const currentBlock = await provider.getBlock("latest");

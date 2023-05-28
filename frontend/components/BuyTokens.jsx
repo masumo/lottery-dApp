@@ -25,12 +25,8 @@ export function BuyTokens() {
       const form = e.target;
       const formData = new FormData(form);
       let tokens = formData.get('tokens');
-      try {
-        await buyTokens(tokens, signer, lotteryContract, tokenRatio, setData, setLoading);
-      } catch (error) {
-        console.log(`Main Error ${error}`)
-        setData(error)
-      }
+      await buyTokens(tokens, signer, lotteryContract, tokenRatio, setData, setLoading);
+      
       
     }else{
       alert("Please connect to a wallet");
@@ -72,23 +68,10 @@ export function BuyTokens() {
           setData(`Tokens bought (${receipt.transactionHash})\n`);
         
     } catch (error) {
-        setData(error.reason);
-        console.log(`ERRORRR IS ${error.code}`);
-        console.log(`Data IS ${error.data}`);
+        setData(error.data.message);
+        console.log(`ERROR IS ${error.data.message}`);
+        setLoading(false);
     }
-
-    // contract.connect(signer).purchaseTokens({
-    //     value: ethers.utils.parseEther(tokens).div(tokenRatio),
-    //   }).then(async (tx) => {
-    //     const receipt = await tx.wait();
-    //     console.log(`Tokens bought (${receipt.transactionHash})\n`);
-    //     setData(`Tokens bought (${receipt.transactionHash})\n`);
-    //   }).catch((err) => {
-    //   //  setData(err.code); 
-    //    setLoading(false);
-    //    console.log(`Error is ${err.code}`);
-    //   })
-    
   }
    
  

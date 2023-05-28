@@ -5,7 +5,10 @@ import { OpenBets } from "./OpenBets";
 import { DisplayBalance } from "./DisplayBalance";
 import { DisplayTokenBalance } from "./DisplayTokenBalance";
 import { Bet } from "./Bet";
-import { BuyTokens } from "./buyTokens";
+import { BuyTokens } from "./BuyTokens";
+import { CloseLottery } from "./CloseLottery";
+import { DisplayPrize } from "./DisplayPrize";
+import { ClaimPrize } from "./ClaimPrize";
 
 export default function InstructionsComponent() {
 	const router = useRouter();
@@ -16,10 +19,7 @@ export default function InstructionsComponent() {
 					Lottery dApp
 				</h1>
 			</header>
-
-			<div className={styles.buttons_container}>
-				<PageBody></PageBody>
-			</div>
+			<PageBody></PageBody>
 			<div className={styles.footer}>
 				Group 1 Cohort 2 Encode Solidity Bootcamp April 2023
 			</div>
@@ -29,14 +29,16 @@ export default function InstructionsComponent() {
 
 function PageBody(){
 	return(
-		<div>
+		<div className={styles.buttons_container}>
 			<CheckState/><br />
 			<OpenBets/><br />
 			<DisplayBalance/><br />
 			<DisplayTokenBalance/><br />
 			<BuyTokens/><br />
 			<Bet/><br />
-			
+			<CloseLottery></CloseLottery><br />
+			<DisplayPrize></DisplayPrize><br />
+			<ClaimPrize></ClaimPrize><br />
 		</div>
 	)
 }
