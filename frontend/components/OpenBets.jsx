@@ -3,6 +3,13 @@ import Router, { useRouter } from "next/router";
 import {ethers, Contract} from 'ethers';
 import { useSigner } from 'wagmi';
 import * as lotteryJson from '../abi/Lottery.json';
+import {
+  Card,
+  Input,
+  Checkbox,
+  Button,
+  Typography,
+} from "@material-tailwind/react";
 
 export function OpenBets() {
   const [data, setData] = React.useState(null);
@@ -37,13 +44,18 @@ export function OpenBets() {
 
     return (
       <div>
-        <h2>Open Bets</h2>
-        <form method="post" onSubmit={handleSubmit}>
-              <label>
-              Duration: &nbsp; 
-              </label>
-              <input name="duration" /> &nbsp; 
-              <button type="submit">Open Bets</button>
+        <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" method="post" onSubmit={handleSubmit}>
+            <Typography
+               variant="medium"
+               color="blue-gray"
+               className="mb-4 font-medium"
+              >
+              Enter the bet duration
+            </Typography>
+            <div className="mb-4 flex flex-col gap-6">
+              <Input label ="Duration:" name="duration" /> 
+            </div>
+              <Button className="mt-6" fullWidth type="submit">Open Bets</Button>
           </form>
           { 
             isLoading? <p>Opening bets...</p> : <p></p>
@@ -51,7 +63,6 @@ export function OpenBets() {
           { 
             data? <p>{data}</p> : <p></p>
           }
-          
       </div>
     )
     

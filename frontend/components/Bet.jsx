@@ -4,6 +4,7 @@ import {ethers, Contract} from 'ethers';
 import { useSigner } from 'wagmi';
 import * as lotteryJson from '../abi/Lottery.json';
 import * as tokenJson from '../abi/LotteryToken.json';
+import { Button, Typography, Input } from '@material-tailwind/react';
 
 export function Bet() {
   const [data, setData] = React.useState(null);
@@ -40,13 +41,17 @@ export function Bet() {
 
     return (
       <div>
-        <h2>Bet</h2>
-        <form method="post" onSubmit={handleSubmit}>
-              <label>
-              How many times: &nbsp; 
-              </label>
-              <input name="amount" /> &nbsp; 
-              <button type="submit">Bet</button>
+        {/* <h2>Bet</h2> */}
+        <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" method="post" onSubmit={handleSubmit}>
+              <Typography
+                  variant="medium"
+                  color="blue-gray"
+                  className="mb-4 font-medium"
+                >
+                  How many times:
+              </Typography>
+              <Input label ="Bet:" name="amount" />
+              <Button className="mt-6" fullWidth type="submit">Bet</Button>
           </form>
           { 
             isLoading? <p>Betting is in progress...</p> : <p></p>

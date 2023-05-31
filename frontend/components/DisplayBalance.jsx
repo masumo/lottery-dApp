@@ -2,6 +2,7 @@ import * as React from 'react';
 import Router, { useRouter } from "next/router";
 import {ethers, Contract} from 'ethers';
 import { useSigner } from 'wagmi';
+import { Button } from '@material-tailwind/react';
 
 
 export function DisplayBalance() {
@@ -16,10 +17,10 @@ export function DisplayBalance() {
   const provider = new ethers.providers.EtherscanProvider(testnet, etherscanApi); 
   return (
     <div>
-      <h2>Display Balance</h2>
-      <button onClick={async () => await displayBalance(signer, provider, setLoading, setData)}>
+      {/*<h2>Display Balance</h2>*/}
+      <Button onClick={async () => await displayBalance(signer, provider, setLoading, setData)}>
         Display Balance
-      </button>
+      </Button>
         { 
           isLoading? <p>Checking the Account Balance...</p> : <p></p>
         }

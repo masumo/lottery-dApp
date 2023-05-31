@@ -3,6 +3,7 @@ import Router, { useRouter } from "next/router";
 import {ethers, Contract} from 'ethers';
 import { useSigner } from 'wagmi';
 import * as lotteryJson from '../abi/Lottery.json';
+import { Button, Typography, Input} from '@material-tailwind/react';
 
 export function BuyTokens() {
   const [data, setData] = React.useState(null);
@@ -36,13 +37,19 @@ export function BuyTokens() {
 
     return (
       <div>
-        <h2>Buy Tokens</h2>
-        <form method="post" onSubmit={handleSubmit}>
-              <label>
-              Tokens: &nbsp; 
-              </label>
-              <input name="tokens" /> &nbsp; 
-              <button type="submit">Buy Tokens</button>
+        {/* <h2>Buy Tokens</h2> */}
+        <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" method="post" onSubmit={handleSubmit}>
+              <Typography
+                  variant="medium"
+                  color="blue-gray"
+                  className="mb-4 font-medium"
+                  >
+                  Enter the amount of token:
+              </Typography>
+              <div className="mb-4 flex flex-col gap-6">
+                <Input label ="Amount:" name="tokens" />
+              </div>
+              <Button className="mt-6" fullWidth type="submit">Buy Tokens</Button>
           </form>
           { 
             isLoading? <p>Buying Tokens...</p> : <p></p>

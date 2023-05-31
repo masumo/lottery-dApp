@@ -3,6 +3,7 @@ import Router, { useRouter } from "next/router";
 import {ethers, Contract} from 'ethers';
 import * as lotteryJson from '../abi/Lottery.json';
 import { useSigner } from 'wagmi';
+import { Button, Input, Typography } from '@material-tailwind/react';
 
 export function ClaimPrize() {
   const [data, setData] = React.useState(null);
@@ -35,13 +36,16 @@ export function ClaimPrize() {
 
     return (
       <div>
-        <h2>Claim Tokens</h2>
-        <form method="post" onSubmit={handleSubmit}>
-              <label>
-              Claim Tokens: &nbsp; 
-              </label>
-              <input name="amount" /> &nbsp; 
-              <button type="submit">Claim</button>
+        <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" method="post" onSubmit={handleSubmit}>
+              <Typography
+                  variant="medium"
+                  color="blue-gray"
+                  className="mb-4 font-medium"
+                >
+                  Claim Tokens:
+              </Typography>
+                <Input label ="Amount:" name="amount" /> 
+              <Button className="mt-6" fullWidth type="submit">Claim</Button>
           </form>
           { 
             isLoading? <p>Claiming Tokens...</p> : <p></p>

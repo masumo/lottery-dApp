@@ -3,6 +3,7 @@ import Router, { useRouter } from "next/router";
 import {ethers, Contract} from 'ethers';
 import * as lotteryJson from '../abi/Lottery.json';
 import styles from "../styles/InstructionsComponent.module.css";
+import { Alert, Button, Spinner, Typography } from '@material-tailwind/react';
 
 export function CheckState() {
   const [data, setData] = React.useState(null);
@@ -20,16 +21,16 @@ export function CheckState() {
 
     return (
       <div>
-        <h2>Check State</h2>
-      
-        <button onClick={async () => await checkState(lotteryContract, provider, setLoading, setData)}>
+        <div>
+        <Button className="mt-6" onClick={async () => await checkState(lotteryContract, provider, setLoading, setData)}>
           Check State
-        </button>
+        </Button>
+        </div>
         { 
-          isLoading? <p>Checking the state...</p> : <p></p>
+          isLoading? <Spinner/> : <p></p>
         }
         { 
-          data? <p>{data}</p> : <p></p>
+          data? <div><Typography variant="medium" color="blue-gray" className="mb-4 font-medium">{data}</Typography></div> : <p></p>
         }
         </div>
           

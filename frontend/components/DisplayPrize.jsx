@@ -3,6 +3,7 @@ import Router, { useRouter } from "next/router";
 import {ethers, Contract} from 'ethers';
 import { useSigner } from 'wagmi';
 import * as lotteryJson from '../abi/Lottery.json';
+import { Button, Typography } from '@material-tailwind/react';
 
 
 export function DisplayPrize() {
@@ -19,15 +20,16 @@ export function DisplayPrize() {
   const lotteryContract = new Contract(lotteryAddress, lotteryJson.abi, provider);
   return (
     <div>
-      <h2>Display Prize</h2>
-      <button onClick={async () => await displayPrize(signer, lotteryContract, setLoading, setData)}>
+      <div>
+      <Button onClick={async () => await displayPrize(signer, lotteryContract, setLoading, setData)}>
         Display Prize
-      </button>
+      </Button>
+      </div>
         { 
           isLoading? <p>Checking Prize...</p> : <p></p>
         }
         { 
-          data? <p>{data}</p> : <p></p>
+          data? <div><Typography variant="medium" color="blue-gray" className="mb-4 font-medium">{data}</Typography></div> : <p></p>
         }
         
     </div>

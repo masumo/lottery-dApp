@@ -20,6 +20,8 @@ import { publicProvider } from "wagmi/providers/public";
 import MainLayout from "../layout/mainLayout";
 import { useRouter } from "next/router";
 
+import { ThemeProvider } from "@material-tailwind/react";
+
 const { chains, provider } = configureChains(
 	[
 		mainnet,
@@ -57,6 +59,7 @@ function MyApp({ Component, pageProps }) {
 		},
 	});
 	return (
+	  <ThemeProvider>
 		<WagmiConfig client={wagmiClient}>
 			<RainbowKitProvider
 				modalSize="compact"
@@ -68,6 +71,7 @@ function MyApp({ Component, pageProps }) {
 				</MainLayout>
 			</RainbowKitProvider>
 		</WagmiConfig>
+	  </ThemeProvider>
 	);
 }
 
