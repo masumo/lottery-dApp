@@ -2,7 +2,7 @@ import * as React from 'react';
 import Router, { useRouter } from "next/router";
 import {ethers, Contract} from 'ethers';
 import { useSigner } from 'wagmi';
-import { Button } from '@material-tailwind/react';
+import { Button, Typography } from '@material-tailwind/react';
 
 
 export function DisplayBalance() {
@@ -16,16 +16,17 @@ export function DisplayBalance() {
   let testnet = process.env.NEXT_PUBLIC_TESTNET;
   const provider = new ethers.providers.EtherscanProvider(testnet, etherscanApi); 
   return (
-    <div>
-      {/*<h2>Display Balance</h2>*/}
-      <Button onClick={async () => await displayBalance(signer, provider, setLoading, setData)}>
+    <div className="mt-2 w-80 max-w-screen-lg sm:w-96">
+      <div className="flex justify-center">
+      <Button className="mb-2" onClick={async () => await displayBalance(signer, provider, setLoading, setData)}>
         Display Balance
       </Button>
+      </div>
         { 
-          isLoading? <p>Checking the Account Balance...</p> : <p></p>
+          isLoading? <Typography variant="medium" color="blue-gray" className="text-center mb-2 font-medium">Checking the Account Balance...</Typography> : <p></p>
         }
         { 
-          data? <p>{data}</p> : <p></p>
+          data? <Typography variant="medium" color="blue-gray" className="text-center mb-2 font-medium">{data}</Typography> : <p></p>
         }
         
     </div>

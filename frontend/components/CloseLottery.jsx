@@ -3,6 +3,7 @@ import Router, { useRouter } from "next/router";
 import {ethers, Contract} from 'ethers';
 import * as lotteryJson from '../abi/Lottery.json';
 import { useSigner } from 'wagmi';
+import { Button, Typography } from '@material-tailwind/react';
 
 export function CloseLottery() {
   const [data, setData] = React.useState(null);
@@ -20,16 +21,17 @@ export function CloseLottery() {
    const lotteryContract = new Contract(lotteryAddress, lotteryJson.abi, provider);
 
     return (
-      <div>
-        <h2>Close Lottery</h2>
-        <button onClick={async () => await closeLottery(lotteryContract, signer, setLoading, setData)}>
-          Close Lottery
-        </button>
+      <div className="mt-2 w-80 max-w-screen-lg sm:w-96">
+        <div className="flex justify-center">
+          <Button onClick={async () => await closeLottery(lotteryContract, signer, setLoading, setData)}>
+            Close Lottery
+          </Button>
+        </div>
           { 
-            isLoading? <p>Clossing Lottery...</p> : <p></p>
+            isLoading? <Typography variant="medium" color="blue-gray" className="text-center mb-2 font-medium">Clossing Lottery...</Typography> : <p></p>
           }
           { 
-            data? <p>{data}</p> : <p></p>
+            data? <Typography variant="medium" color="blue-gray" className="text-center mb-2 font-medium">{data}</Typography> : <p></p>
           }
           
       </div>
@@ -39,12 +41,18 @@ export function CloseLottery() {
 
 
  async function closeLottery(contract, signer, setLoading, setData) {
-  setLoading(true);
-  const tx = await contract.connect(signer).closeLottery();
-  const receipt = await tx.wait();
-  setLoading(false);
-  console.log(`Bets closed (${receipt.transactionHash})\n`);
-  setData(`Bets closed (${receipt.transactionHash})\n`)
+  try{
+    setLoading(true);
+    const tx = await contract.connect(signer).closeLottery();
+    const receipt = await tx.wait();
+    setLoading(false);
+    console.log(`Bets closed (${receipt.transactionHash})\n`);
+    setData(`Bets closed (${receipt.transactionHash})\n`)
+  } catch(error){
+    setData(error.reason);
+    setLoading(false);
+  }
+  
 }
    
  

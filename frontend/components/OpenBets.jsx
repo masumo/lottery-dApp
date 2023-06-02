@@ -44,7 +44,7 @@ export function OpenBets() {
 
     return (
       <div>
-        <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" method="post" onSubmit={handleSubmit}>
+        <form className="mt-4 mb-2 w-80 max-w-screen-lg sm:w-96" method="post" onSubmit={handleSubmit}>
             <Typography
                variant="medium"
                color="blue-gray"

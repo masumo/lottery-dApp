@@ -20,17 +20,17 @@ export function CheckState() {
    const lotteryContract = new Contract(lotteryAddress, lotteryJson.abi, provider);
 
     return (
-      <div>
-        <div>
-        <Button className="mt-6" onClick={async () => await checkState(lotteryContract, provider, setLoading, setData)}>
+      <div className="mt-2 w-80 max-w-screen-lg sm:w-96">
+        <div className="flex justify-center">
+        <Button className="mb-2" onClick={async () => await checkState(lotteryContract, provider, setLoading, setData)}>
           Check State
         </Button>
         </div>
         { 
-          isLoading? <Spinner/> : <p></p>
+          isLoading? <Typography variant="medium" color="blue-gray" className="text-center mb-2 font-medium">Checking state...</Typography> : <p></p>
         }
         { 
-          data? <div><Typography variant="medium" color="blue-gray" className="mb-4 font-medium">{data}</Typography></div> : <p></p>
+          data? <Typography variant="medium" color="blue-gray" className="text-center mb-2 font-medium">{data}</Typography> : <p></p>
         }
         </div>
           

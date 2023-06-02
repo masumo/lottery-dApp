@@ -3,7 +3,7 @@ import Router, { useRouter } from "next/router";
 import {ethers, Contract} from 'ethers';
 import * as tokenJson from '../abi/LotteryToken.json';
 import { useSigner } from 'wagmi';
-import { Button } from '@material-tailwind/react';
+import { Button, Typography } from '@material-tailwind/react';
 
 
 export function DisplayTokenBalance() {
@@ -21,16 +21,17 @@ export function DisplayTokenBalance() {
   const tokenContract = new Contract(tokenAddress, tokenJson.abi, provider);
 
     return (
-      <div>
-        {/* <h2>Display Token Balance</h2> */}
-        <Button onClick={async () => await displayTokenBalance(tokenContract, signer, setLoading, setData)}>
-          Display Token Balance
-        </Button>
+      <div className="mt-2 w-80 max-w-screen-lg sm:w-96">
+        <div className="flex justify-center">
+          <Button className="mb-2" onClick={async () => await displayTokenBalance(tokenContract, signer, setLoading, setData)}>
+            Display Token Balance
+          </Button>
+        </div>
           { 
-            isLoading? <p>Checking token balance...</p> : <p></p>
+            isLoading? <Typography variant="medium" color="blue-gray" className="text-center mb-2 font-medium">Checking token balance...</Typography> : <p></p>
           }
           { 
-            data? <p>{data}</p> : <p></p>
+            data? <Typography variant="medium" color="blue-gray" className="text-center mb-2 font-medium">{data}</Typography> : <p></p>
           }
           
       </div>

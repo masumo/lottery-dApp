@@ -9,6 +9,7 @@ import { BuyTokens } from "./BuyTokens";
 import { CloseLottery } from "./CloseLottery";
 import { DisplayPrize } from "./DisplayPrize";
 import { ClaimPrize } from "./ClaimPrize";
+import { BurnToken } from "./BurnToken";
 
 import {
     Tabs,
@@ -56,8 +57,8 @@ function PageBody(){
 				<Tab key="prize" value="prize">
 					Prize
 				</Tab>
-				<Tab key="withdraw" value="withdraw">
-					Withdraw
+				<Tab key="burn" value="burn">
+					Burn
 				</Tab>
 				<Tab key="close" value="close">
 					Close
@@ -92,8 +93,17 @@ function PageBody(){
 						<ClaimPrize></ClaimPrize>
 					</div>
 				</TabPanel>
+				<TabPanel key="burn" value="burn">
+					<div className="flex flex-col items-center justify-center gap-4">
+						<DisplayBalance/>
+						<DisplayTokenBalance/>
+						<BurnToken/>
+					</div>
+				</TabPanel>
 				<TabPanel key="close" value="close">
-					<CloseLottery></CloseLottery><br />
+					<div className="flex flex-col items-center justify-center gap-4">
+						<CloseLottery></CloseLottery>
+					</div>
 				</TabPanel>
 			</TabsBody>
 		</Tabs>
