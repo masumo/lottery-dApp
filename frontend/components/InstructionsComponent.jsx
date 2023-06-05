@@ -23,11 +23,10 @@ export default function InstructionsComponent() {
 	const router = useRouter();
 	return (
 		<>
-		
-				<header >
+				<header>
 					<Typography variant="h1">Lottery dApp</Typography>
 				</header>
-				<div className="w-4/6 h-4 block">
+				<div className="w-4/6 h-fit block">
 					<PageBody></PageBody>
 				</div>
 				<footer  className="fixed inset-x-0 bottom-0 bg-neutral-900 text-center ">
@@ -54,14 +53,14 @@ function PageBody(){
 				<Tab key="bet" value="bet">
 					Bet
 				</Tab>
+				<Tab key="close" value="close">
+					Close
+				</Tab>
 				<Tab key="prize" value="prize">
 					Prize
 				</Tab>
 				<Tab key="burn" value="burn">
 					Burn
-				</Tab>
-				<Tab key="close" value="close">
-					Close
 				</Tab>
 			</TabsHeader>
 			<TabsBody>
@@ -87,6 +86,11 @@ function PageBody(){
 						<Bet/>
 					</div>
 				</TabPanel>
+				<TabPanel key="close" value="close">
+					<div className="flex flex-col items-center justify-center gap-4">
+						<CloseLottery></CloseLottery>
+					</div>
+				</TabPanel>
 				<TabPanel key="prize" value="prize">
 					<div className="flex flex-col items-center justify-center gap-4">
 						<DisplayPrize></DisplayPrize>
@@ -98,11 +102,6 @@ function PageBody(){
 						<DisplayBalance/>
 						<DisplayTokenBalance/>
 						<BurnToken/>
-					</div>
-				</TabPanel>
-				<TabPanel key="close" value="close">
-					<div className="flex flex-col items-center justify-center gap-4">
-						<CloseLottery></CloseLottery>
 					</div>
 				</TabPanel>
 			</TabsBody>

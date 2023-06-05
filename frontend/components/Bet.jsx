@@ -50,7 +50,7 @@ export function Bet() {
                 >
                   How many times:
               </Typography>
-              <Input label ="Bet:" name="amount" />
+              <Input label ="Number of bets:" name="amount" />
               <Button className="mt-6" fullWidth type="submit">Bet</Button>
           </form>
           { 

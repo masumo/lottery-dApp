@@ -50,7 +50,7 @@ export function OpenBets() {
                color="blue-gray"
                className="mb-4 font-medium"
               >
-              Enter the bet duration
+              Enter the bet duration:
             </Typography>
             <div className="mb-4 flex flex-col gap-6">
               <Input label ="Duration:" name="duration" /> 

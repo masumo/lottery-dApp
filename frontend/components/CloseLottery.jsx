@@ -22,6 +22,9 @@ export function CloseLottery() {
 
     return (
       <div className="mt-2 w-80 max-w-screen-lg sm:w-96">
+        <Typography variant="medium" color="blue-gray" className="text-center mb-2 font-medium">
+          The lottery need to be closed, before claiming the prize or burning the tokens.
+        </Typography>
         <div className="flex justify-center">
           <Button onClick={async () => await closeLottery(lotteryContract, signer, setLoading, setData)}>
             Close Lottery
